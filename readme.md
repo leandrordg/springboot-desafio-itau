@@ -116,3 +116,41 @@ As transações são armazenadas em memória utilizando uma **`ConcurrentLinkedQ
 ### Estatísticas
 
 As estatísticas são calculadas apenas para transações realizadas nos últimos 60 segundos. Se não houver transações no período, as estatísticas retornam valores zero.
+
+## Dependências Utilizadas
+
+Este projeto utiliza as seguintes dependências do **Spring Boot**:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+Essas dependências garantem o funcionamento da API, validação dos dados, e ferramentas de desenvolvimento e teste para o projeto.
+
+## Contribuindo
+
+Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias, correções ou novas funcionalidades.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
