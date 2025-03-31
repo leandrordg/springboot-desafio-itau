@@ -22,7 +22,7 @@ A API implementa os seguintes endpoints:
    Limpa todos os dados de transações armazenados.
 
 3. **GET `/estatistica`**  
-   Retorna as estatísticas das transações que ocorreram nos últimos 60 segundos. As estatísticas incluem:
+   Retorna as estatísticas das transações do tipo `DoubleSummaryStatistics`, que ocorreram nos últimos 60 segundos. As estatísticas incluem:
    - Quantidade de transações
    - Soma total dos valores das transações
    - Média dos valores
@@ -31,35 +31,9 @@ A API implementa os seguintes endpoints:
 
 ### Requisitos Técnicos
 
-- **Tecnologia**: A aplicação foi desenvolvida utilizando **Java** com **Spring Boot**.
+- **Tecnologia**: A aplicação foi desenvolvida utilizando **Java 17** com **Spring Boot 3.4.4**.
 - **Armazenamento**: Os dados são armazenados **em memória** utilizando uma **ConcurrentLinkedQueue**, que garante a segurança em acesso concorrente.
 - **Formato de dados**: A API utiliza **JSON** para comunicação.
-
-## Como Rodar o Projeto
-
-### Pré-requisitos
-
-- **Java 17** ou superior
-- **Maven** para build (ou use o wrapper do Maven `mvnw`)
-
-### Passos para Execução
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/leandrordg/desafio-itau-backend.git
-   ```
-
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd desafio-itau-backend
-   ```
-
-3. Execute o aplicativo:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-
-   A aplicação estará disponível em `http://localhost:8080`.
 
 ## Exemplos de Uso
 
@@ -87,7 +61,7 @@ Este endpoint limpa todas as transações armazenadas. Resposta:
 
 ### 3. Calcular Estatísticas: `GET /estatistica`
 
-Este endpoint retorna as estatísticas das transações realizadas nos últimos 60 segundos. Exemplo de resposta:
+Este endpoint retorna as estatísticas das transações do tipo `DoubleSummaryStatistics`, realizadas nos últimos 60 segundos. Exemplo de resposta:
 
 ```json
 {
@@ -111,11 +85,11 @@ As transações são validadas com os seguintes critérios:
 
 ### Armazenamento em Memória
 
-As transações são armazenadas em memória utilizando uma **`ConcurrentLinkedQueue`**. Essa estrutura permite um acesso seguro em ambientes multithreaded, o que é importante caso haja concorrência no armazenamento das transações.
+As transações são armazenadas em memória utilizando uma `ConcurrentLinkedQueue`. Essa estrutura permite um acesso seguro em ambientes multithreaded, o que é importante caso haja concorrência no armazenamento das transações.
 
 ### Estatísticas
 
-As estatísticas são calculadas apenas para transações realizadas nos últimos 60 segundos. Se não houver transações no período, as estatísticas retornam valores zero.
+As estatísticas são calculadas através de um pacote utilitário do java `DoubleSummaryStatistics`, que através de um filtro retorna apenas transações realizadas nos últimos 60 segundos **`1 minuto`**. Se não houver transações no período, as estatísticas retornam valores zero.
 
 ## Dependências Utilizadas
 
